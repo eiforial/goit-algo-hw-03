@@ -1,20 +1,20 @@
-import random
+from datetime import datetime
 
-def random_unique_numbers():
-    try:
-    
-        min = int(input("Введите минимальное значение: "))
-        max = int(input("Введите максимальное значение: "))
-        quantity = int(input("Введите количество уникальных чисел: "))
-        if quantity > max -min + 1:
-            print ("количество выведенных чисел не может быть больше количества заданного диапазоном")
-            return  [] 
-    
-        numbers = list(range(min, max + 1))
-        random.shuffle(numbers)
-        return numbers[:quantity]
-    
-    except ValueError as e:
-        print ("Неправильный формат ввода данных, введите целое число", e)
-        random_unique_numbers()
-print(random_unique_numbers())
+def get_days_from_today():
+        try:
+                date = input("Введите дату в формате ГГГГ-ММ-ДД: ")
+                date_today = datetime.today()
+                user_date = datetime.strptime(date, "%Y-%m-%d")
+                difference = date_today - user_date
+        
+                print(f"Разница между датами состовляет {difference.days} дней")
+
+                get_days_from_today()
+
+        except ValueError as e:
+
+            print("Неправильный формат даты. Используйте формат ГГГГ-ММ-ДД.", e)
+
+            get_days_from_today()
+
+get_days_from_today()
