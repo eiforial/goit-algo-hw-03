@@ -13,8 +13,8 @@ def get_days_from_today():
 
         except ValueError as e:
 
-            print("Неправильный формат даты. Используйте формат ГГГГ-ММ-ДД.", e)
+            print("Неправильный формат даты! Используйте формат ГГГГ-ММ-ДД.", e)
 
             get_days_from_today()
 
-get_days_from_today()
+get_days_from_today() 
