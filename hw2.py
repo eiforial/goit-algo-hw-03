@@ -1,20 +1,33 @@
 import random
 
-def random_unique_numbers():
-    try:
+min = 1
+max = 100
+quantity = 10
+
+def get_number_ticket(min, max, quantity):
     
-        min = int(input("Введите минимальное значение: "))
-        max = int(input("Введите максимальное значение: "))
-        quantity = int(input("Введите количество уникальных чисел: "))
-        if quantity > max -min + 1:
-            print ("количество выведенных чисел не может быть больше количества заданного диапазоном")
-            return  [] 
+    if type(min) != int or type(max) != int or type(quantity) != int:
+        print("min, max, quantity должны бить целым числом")
+        return None
     
-        numbers = list(range(min, max + 1))
-        random.shuffle(numbers)
-        return numbers[:quantity]
+    if min > max:
+        print("min должно быть меньше чем max")
+        return None
     
-    except ValueError as e:
-        print ("Неправильный формат ввода данных, введите целое число", e)
-        random_unique_numbers()
-print(random_unique_numbers())
+    if quantity < 0:
+        print("quantity не может быть отрицательным")
+        return None
+
+    if quantity > max - min + 1:
+        print("количество выведенных чисел не может быть больше количества заданного диапазоном")
+        return None
+    
+    numbers = set()
+    while len(numbers) < quantity:
+        numbers.add(random.randint(min, max))
+    
+    return sorted(list(numbers))
+
+ticket_num = get_number_ticket(min, max, quantity)
+
+print(ticket_num)
