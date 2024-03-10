@@ -35,7 +35,7 @@ def get_upcoming_birthdays(users, days=7):
         birthday_this_year = user["birthday"].replace(year=today.year)
 
         if birthday_this_year < today:
-            birthday_this_year = birthday_this_year.replace(year=today.year + 1)
+            birthday_this_year = datetime(birthday_this_year.year + 1, birthday_this_year.month, birthday_this_year.day).date()
 
         if 0 <= (birthday_this_year - today).days <= days:
             if birthday_this_year.weekday() >= 5:
