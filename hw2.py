@@ -6,19 +6,19 @@ def get_number_ticket(min, max, quantity):
     
     if type(min) != int or type(max) != int or type(quantity) != int:
         
-        return ''
+        return []
     
     if min > max:
         
-        return ''
+        return []
     
     if quantity < 0:
         
-        return ''
+        return []
 
     if quantity > max - min + 1:
         
-        return ''
+        return []
     
     numbers = set()
 
